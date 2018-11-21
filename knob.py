@@ -1,23 +1,33 @@
-from gpiozero.pins.mock import MockFactory
-from gpiozero import Device, Button, LED
+from gpiozero import Button
 from time import sleep
 from sys import exit
-Device.pin_factory = MockFactory()
 
-class _Knob(object):
-	RIGHT = None
-	LEFT = None
+def emptyFunc():
+	pass
+
+class Knob(object):
+	right = None
+	left = None
+	button = None
 
 	def __init__(self, 
 		pin_right = None, pin_left = None, pin_button = None, 
-		on_rotate_right = empty_func, on_rotate_left = empty_func, on_click = empty_func,
 		right_pull_up = True, left_pull_up = True, button_pull_up = True, 
-		pin_factory = None):
-		print("hi")
-		if pin_right == 2 and pin_left == None:
+		pin_fact = None):
+		if pin_right == None and pin_left == None:
 			exit("A knob must either rotate left or right (or both)! Please use a button instead.")
-			
-#def knob
+		if not pin_right == None:
+			right = Button(pin_right, right_pull_up, pin_factory=pin_fact)
+		if not pin_left == None:
+			left = Button(pin_left, left_pull_up, pin_factory=pin_fact)
+		if not pin_button == None:
+			button = Button(pin_button)
 
-def empty_func():
-	pass
+	def on_rotate_left(func):
+		left.when_pressed() = func
+
+	def on_rotate_right(func):
+		right.when_pressed() = func
+
+	def on_press(func):
+		button.when_pressed() = func
