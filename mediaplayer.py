@@ -35,11 +35,11 @@ class RadioPlayer():
 
 
 	def changeToRADIOCOMERCIAL(self):
-		self._changeStation(_Station.RADIOCOMERCIAL.value)
+		self._changeStation(_Station.RADIOCOMERCIAL)
 
 
 	def changeToRFM(self):
-		self._changeStation(_Station.RFM.value)
+		self._changeStation(_Station.RFM)
 
 	def pause(self):
 		self.player.pause()
