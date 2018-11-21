@@ -2,8 +2,7 @@ from gpiozero import Button
 from time import sleep
 from sys import exit
 
-def emptyFunc():
-	pass
+
 
 class Knob(object):
 	right = None
@@ -24,10 +23,10 @@ class Knob(object):
 			button = Button(pin_button)
 
 	def on_rotate_left(func):
-		left.when_pressed() = func
+		left.when_pressed = func
 
 	def on_rotate_right(func):
-		right.when_pressed() = func
+		right.when_pressed = func
 
 	def on_press(func):
-		button.when_pressed() = func
+		button.when_pressed = func
