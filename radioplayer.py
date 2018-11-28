@@ -26,13 +26,18 @@ class RadioPlayer():
 		player = self.player
 		if player.audio_get_volume() + i < 100 and player.audio_get_volume() + i > 0:
 			player.audio_set_volume(player.audio_get_volume() + i)
+		print(self.player.audio_get_volume())
 
 	def volumeUp(self):
 		self._changeVolume(1)
+		
 
 	def volumeDown(self):
 		self._changeVolume(-1)
 
+	def toggleMute(self):
+		self.player.audio_toggle_mute()
+		print(self.player.audio_get_volume())
 
 	def changeToRADIOCOMERCIAL(self):
 		#self._changeStation(_Station.RADIOCOMERCIAL)
@@ -42,6 +47,19 @@ class RadioPlayer():
 	def changeToRFM(self):
 		#self._changeStation(_Station.RFM)
 		self._changeStation(_Station.RFM.value)
+
+	def stopRADIOCOMERCIAL(self):
+		player = self.player
+		#if player.get_media().get_mrl == self._changeStation(_Station.RADIOCOMERCIAL)
+		if player.get_media().get_mrl == self._changeStation(_Station.RADIOCOMERCIAL.value)
+			player.stop()	
+
+	def stopRFM(self):
+		player = self.player
+		#if player.get_media().get_mrl == self._changeStation(_Station.RFM)
+		if player.get_media().get_mrl == self._changeStation(_Station.RFM.value)
+			player.stop()
+
 	def pause(self):
 		self.player.pause()
 
